@@ -26,7 +26,7 @@ main {
     position: relative;
     height: 90vh;
     margin-bottom: 25px;
-    background: var(--main-bg-color-red);
+    background: var(--main-bg-color-blue);
     transition: all .3s;
     box-shadow: 0 0 1px 0 rgba(0,0,0,.4), 0 0 5px 6px rgba(0,0,0,.1);
     overflow: hidden;
