@@ -59,11 +59,15 @@ function getQuote() {
     author.innerHTML = Messages[key].author;
 }
 
-window.onload = getQuote;
+window.onload = function() {
+    getQuote();
+    videoAction();
+}
 
 let findQuote = document.querySelector("#findquote");
 let loader = document.querySelector("#loader");
 let bgImage = document.querySelector(".bgimage");
+let bgVideo = document.getElementById("bgvideo");
 
 function actionBefore() {
     findQuote.style.opacity = "0.5";
@@ -71,6 +75,9 @@ function actionBefore() {
     author.style.opacity = "0";
     loader.style.display = "initial";
     bgImage.classList.add('bgAnimate');
+    if (bgImage.style.visibility = "hidden") {
+        bgVideo.classList.add('bgAnimate');
+    }
 }
 
 function actionAfter() {
@@ -79,16 +86,68 @@ function actionAfter() {
     author.style.opacity = "1";
     loader.style.display = "none";
     bgImage.classList.remove('bgAnimate');
+    bgVideo.classList.remove('bgAnimate');
 }
 
+// let nclick = 0;
 findQuote.onclick = function(e) {
     e.preventDefault();
     actionBefore();
     setTimeout(function() {
         getQuote();
         actionAfter();
+    }, 2000);
+
+    // nclick++;
+    // if (nclick === 3) {
+    //     alert('work');
+    // }
+}
+
+
+function videoAction() {
+    bgVideo.volume = 0.2;
+    bgVideo.load();
+    bgVideo.addEventListener("timeupdate", function() {
+        if (bgVideo.currentTime >= 1) {
+            bgVideo.style.opacity = "0.1";
+            bgImage.style.visibility = "hidden";
+        }
+    });
+}
+
+
+let videoPp = document.getElementById("videopp");
+videoPp.onclick = function(e) {
+    e.preventDefault();
+    if (bgVideo.paused) {
+        bgVideo.play();
+    } else {
+        bgVideo.pause();
+    }
+}
+
+let colorsLists = document.querySelectorAll('.color-list');
+colorsLists.forEach((colorList) => {
+    colorList.onclick = changeBgColor;
+    let colorCode = colorList.getAttribute("data-color-code");
+    colorList.innerHTML = `<span style="background: ${colorCode}"></span>`;
+});
+let mainElement = document.querySelector('main');
+
+function changeBgColor(e) {
+    e.preventDefault();
+    let color = e.currentTarget.getAttribute("data-color");
+    setTimeout(function() {
+        mainElement.style.background = `var(--main-bg-color-${color})`;
+    }, 1000)
+    mainElement.style.animationName = "entrance";
+    mainElement.style.animationDuration = "2s";
+    setTimeout(function() {
+        mainElement.style.animationName = "";
     }, 2000)
 }
+
 
 
 // Code is poetry
