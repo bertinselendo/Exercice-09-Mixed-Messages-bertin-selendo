@@ -1,0 +1,157 @@
+:root {
+    --title-font-size: 42px;
+    --quote-font-size: 32px;
+    --generale-font-size: 18px;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all .5s;
+} 
+
+body {
+    background-color: #0e1618;
+    height: 100%;
+    font-size: var(--generale-font-size);
+    font-family: sans-serif;
+}
+
+main {
+    position: relative;
+    height: 90vh;
+    margin-bottom: 25px;
+    background: radial-gradient(ellipse at center,#26aacc 0%,#004d77 100%);
+    transition: all .3s;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,.4), 0 0 5px 6px rgba(0,0,0,.1);
+}
+
+.bgimage {
+    position: absolute;
+    background-image: url("./images/island-lake.jpg");
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 0.1;
+    transition: opacity 1s;
+    z-index: 1;
+}
+
+.content {
+    position: absolute;
+    /* background-color: #fff; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+h1 {
+    font-weight: 700;
+    padding-top: 32px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    font-size: var(--title-font-size);
+    color: #fff;
+    margin: 0 10%;
+    display: inline-block;
+    text-transform: none;
+    text-align: center;
+    font-family: 'Tilt Prism', cursive;
+}
+
+.quote-section {
+    background: rgba(255,255,255,.06);
+    width: 40vw;
+    padding-left: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 1px 1px rgba(0,0,0,.06);
+    font-weight: 300;
+    vertical-align: middle;
+    color: #fff;
+    padding: 50px;
+    text-align: center;
+    position: relative;
+}
+
+#quote {
+    opacity: 1;
+    font-family: 'Playfair Display SC', serif;
+    font-size: var(--quote-font-size); 
+    transition: all .5s;
+    overflow: hidden;
+}
+
+#author {
+    margin-top: 25px;
+    font-family: 'Playfair', serif;
+}
+
+.cover-separator {
+    width: 440px;
+    height: 1px;
+    display: inline-block;
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,.07);
+    background: linear-gradient(to right,rgba(255,255,255,.1) 0%,rgba(255,255,255,.3) 30%,rgba(255,255,255,.3) 70%,rgba(255,255,255,.1) 100%);
+    margin: 50px 0;
+}
+
+#findquote {
+    display: inline-block;
+    background-color: #fff;
+    box-shadow: 0 1px 1px 0 #ccc;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-top: 25px;
+    color: #545454;
+    font-size: var(--generale-font-size);
+    text-decoration: none;
+    transition: all .2s;
+}
+
+#loader {
+    position: absolute;
+    top: 45%;
+    margin-left: -20px;
+    filter: invert(1);
+    display: none;
+}
+
+.copyright, .copyright a {
+    text-align: center;
+    font-size: var(--generale-font-size);
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    :root {
+        --title-font-size: 24px;
+        --quote-font-size: 18px;
+        --generale-font-size: 14px;
+    
+    }
+    .quote-section {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .quote-section {
+        width: 80vw;
+    }
+}
+
+
+@keyframes bgAnimate {
+    0% { opacity: 0.1; }
+    50% { opacity: 0.05; }
+    100% { opacity: 0.1; }
+}
+
+.bgAnimate {
+    animation: bgAnimate 1s infinite ease;
+}
